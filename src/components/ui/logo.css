@@ -1,0 +1,18 @@
+.org-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  flex: none;
+}
+
+.org-logo--badge {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--red), var(--red-deep));
+  border: none;
+}

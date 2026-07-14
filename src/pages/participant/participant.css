@@ -1,0 +1,199 @@
+.participant {
+  padding-top: var(--space-5);
+}
+
+.participant__hero {
+  max-width: 44rem;
+  margin-bottom: var(--space-5);
+}
+
+.participant__title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  margin: var(--space-2) 0 var(--space-3);
+}
+
+.participant__lead {
+  color: var(--ink-60);
+  font-size: var(--text-lg);
+  max-width: 40rem;
+}
+
+/* ---------- Login ---------- */
+.login {
+  max-width: 26rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.login__subtitle {
+  color: var(--ink-60);
+  font-size: var(--text-sm);
+}
+.login__error {
+  color: var(--red-deep);
+  font-size: var(--text-sm);
+  background: var(--red-08);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.field__label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+.field__input {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius);
+  background: var(--blush);
+  transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+}
+.field__input:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px var(--red-08);
+  background: var(--white);
+}
+
+/* ---------- Picker ---------- */
+.picker__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-3);
+}
+.picker__hello {
+  font-size: var(--text-base);
+}
+.picker__meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-60);
+}
+.picker__closed {
+  padding: var(--space-2) var(--space-3);
+  background: var(--red-08);
+  color: var(--red-deep);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-3);
+}
+.picker__groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-3);
+}
+
+.group-card {
+  padding: var(--space-3);
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  border-top: 3px solid var(--group);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.group-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.group-card__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--group);
+  margin-top: 5px;
+  flex: none;
+}
+.group-card__title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.group-card__labs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.lab-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius);
+  background: var(--blush);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: border-color var(--duration-fast) var(--ease-out-expo),
+    background var(--duration-fast) var(--ease-out-expo),
+    transform var(--duration-fast) var(--ease-out-expo);
+}
+.lab-chip:hover:not(:disabled) {
+  border-color: var(--group);
+  transform: translateX(2px);
+}
+.lab-chip.is-on {
+  border-color: var(--group);
+  background: color-mix(in oklab, var(--group) 12%, var(--white));
+  color: var(--ink);
+}
+.lab-chip__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  font-size: 0.8rem;
+  flex: none;
+}
+.lab-chip.is-on .lab-chip__check {
+  background: var(--group);
+  color: var(--white);
+  border-color: transparent;
+}
+.lab-chip:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.picker__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  flex-wrap: wrap;
+}
+.picker__savednote {
+  font-size: var(--text-sm);
+  color: var(--ink-60);
+}
