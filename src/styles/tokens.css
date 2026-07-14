@@ -1,0 +1,58 @@
+:root {
+  /* Palette — RTD 2026 brand */
+  --red: #cc2027;
+  --red-deep: #8e1116;
+  --red-glow: #ff4a52;
+  --ink: #262626;
+  --white: #ffffff;
+  --blush: #fcf2f2;
+  --ink-60: rgba(38, 38, 38, 0.6);
+  --ink-30: rgba(38, 38, 38, 0.3);
+  --ink-12: rgba(38, 38, 38, 0.12);
+  --red-08: rgba(204, 32, 39, 0.08);
+  --red-16: rgba(204, 32, 39, 0.16);
+  --white-70: rgba(255, 255, 255, 0.7);
+
+  /* Group colors — 7 distinct hues, keyed by group sort_order (1..7) + keynote */
+  --group-1: #cc2027;
+  --group-2: #e8710a;
+  --group-3: #1f9e6e;
+  --group-4: #2f6fd6;
+  --group-5: #7b4bd0;
+  --group-6: #128a9c;
+  --group-7: #c0327a;
+  --group-0: #6b6b6b; /* keynote / unassigned */
+
+  /* Type */
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-body: 'Instrument Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
+
+  --text-xs: 0.72rem;
+  --text-sm: 0.85rem;
+  --text-base: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --text-lg: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+  --text-display: clamp(2.2rem, 1rem + 5vw, 7rem);
+  --text-hero: clamp(3.4rem, 1.2rem + 11vw, 12rem);
+
+  /* Rhythm */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.75rem;
+  --space-5: 3rem;
+  --space-section: clamp(4rem, 3rem + 5vw, 8rem);
+  --rail: clamp(1rem, 4vw, 4rem);
+  --page-max: min(1400px, calc(100vw - 2rem));
+
+  /* Motion */
+  --duration-fast: 160ms;
+  --duration-normal: 320ms;
+  --duration-slow: 700ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --radius: 4px;
+  --radius-lg: 12px;
+  --shadow-card: 0 1px 2px rgba(38, 38, 38, 0.05), 0 8px 28px rgba(204, 32, 39, 0.07);
+  --shadow-live: 0 0 0 1px var(--red), 0 0 28px rgba(204, 32, 39, 0.35);
+}
