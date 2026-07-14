@@ -167,6 +167,30 @@ Click **Deploy**. In ~1 minute you get a live URL like
 
 ---
 
+## 3b. Deploy with GitHub Pages (free, public repo)
+
+The repo also auto-deploys to GitHub Pages via `.github/workflows/deploy.yml`
+on every push to `main`.
+
+- **Live URL:** `https://anlpt.github.io/glocal-summit/`
+- **Enable once:** repo **Settings → Pages → Build and deployment → Source =
+  GitHub Actions** (already set up if the first deploy ran).
+
+### Turning on real-time on the Pages site
+GitHub Pages is static hosting, so cross-device real-time needs the Supabase
+backend. Add two repo secrets and the next deploy picks them up:
+
+1. Repo **Settings → Secrets and variables → Actions → New repository secret**.
+2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (values from Step 2.3).
+   The anon public key is safe to expose.
+3. Re-run the workflow: **Actions → Deploy to GitHub Pages → Run workflow**
+   (or push any commit).
+
+Without those secrets the site still works, but each browser only sees its own
+data — no live sync between devices.
+
+---
+
 ## 4. Using the platform
 
 ### For participants (`/`)
