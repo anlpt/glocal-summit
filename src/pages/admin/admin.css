@@ -1,0 +1,237 @@
+.admin__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-4) var(--rail) var(--space-5);
+}
+.admin__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+.admin__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1rem + 3vw, 3rem);
+  line-height: 1;
+}
+.admin__head-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.admin__mode {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--ink-12);
+  color: var(--ink-60);
+}
+.admin__mode.is-live {
+  background: color-mix(in oklab, var(--group-3) 20%, var(--white));
+  color: var(--group-3);
+}
+.admin__tabs {
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--ink-12);
+  margin-bottom: var(--space-4);
+}
+.admin__tab {
+  padding: var(--space-2) var(--space-3);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--ink-60);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color var(--duration-fast), border-color var(--duration-fast);
+}
+.admin__tab:hover {
+  color: var(--ink);
+}
+.admin__tab.is-on {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+.admin__error {
+  color: var(--red-deep);
+  background: var(--red-08);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-3);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.panel__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.card__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+.card__hint {
+  font-size: var(--text-sm);
+  color: var(--ink-60);
+}
+.field__row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+.field__row .field__input {
+  flex: 1;
+}
+select.field__input {
+  cursor: pointer;
+}
+
+.voting-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.voting-state {
+  font-weight: 700;
+  color: var(--ink-30);
+}
+.voting-state.is-open {
+  color: var(--group-3);
+}
+
+.grouprow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+.grouprow__color {
+  width: 44px;
+  height: 38px;
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius);
+  background: none;
+  cursor: pointer;
+  flex: none;
+}
+.grouprow__name {
+  flex: 1;
+  font-weight: 600;
+}
+.unitlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.unitlist__row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+.unitlist__row .field__input {
+  flex: 1;
+}
+
+.plist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.plist__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius);
+}
+.plist__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.plist__name {
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+.plist__meta {
+  font-size: var(--text-xs);
+  color: var(--ink-60);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.editor__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-2);
+  flex-wrap: wrap;
+}
+.editor__actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.datatable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.datatable th,
+.datatable td {
+  text-align: left;
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--ink-12);
+  vertical-align: top;
+}
+.datatable th {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-60);
+}
+.datatable__num {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.datatable__people {
+  color: var(--ink-60);
+  font-size: var(--text-xs);
+  max-width: 24rem;
+}
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
