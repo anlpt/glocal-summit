@@ -14,6 +14,7 @@ capturing what was done, key decisions, and where to pick up next.
 | 2026-07-15 | Phase 4: live view | [2026-07-15-live-view.md](2026-07-15-live-view.md) |
 | 2026-07-15 | Phase 5: admin CMS + Excel | [2026-07-15-admin-cms.md](2026-07-15-admin-cms.md) |
 | 2026-07-15 | Phase 6: docs + deploy | [2026-07-15-docs-and-deploy.md](2026-07-15-docs-and-deploy.md) |
+| 2026-07-15 | Scheduled sheet→Supabase sync (every 5h) | [2026-07-15-sheet-sync-agent.md](2026-07-15-sheet-sync-agent.md) |
 
 ## Current status
 
