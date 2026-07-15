@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "oxlint",
     "seed": "node scripts/build-seed.mjs",
-    "logos": "node scripts/fetch-logos.mjs"
+    "logos": "node scripts/fetch-logos.mjs",
+    "sync": "node scripts/sync-sheet.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.0",

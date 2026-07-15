@@ -240,6 +240,44 @@ curl -sL "https://docs.google.com/spreadsheets/d/17e90sIy0RtwrzCdn0lCnWsLQWP8Obm
 In **Supabase mode**, after regenerating, re-run the new `supabase/seed.sql` in
 the SQL editor (or just edit people directly in the admin Participants tab).
 
+### Automatic sync every 5 hours (recommended)
+
+A scheduled job keeps the database in step with the Google Sheet without any
+manual work: **`.github/workflows/sync-sheet.yml`** runs
+`scripts/sync-sheet.mjs` every 5 hours (and on demand). It pulls the sheet,
+then **adds and updates** groups, units, and participants in Supabase.
+
+**What it does / doesn't do**
+- Matches by natural keys: group name, unit name, participant **email**.
+- Inserts anything new; updates changed fields on existing rows.
+- **Never deletes** by default. People removed from the sheet are reported as
+  "orphans" and left in place, so their selections are never lost. To hard-delete
+  them, run the workflow manually with **Run workflow → allow_delete = true**.
+- Preserves logos uploaded via the CMS (it doesn't overwrite `org_logo_url`).
+- Preserves group colors you changed in the CMS.
+
+**Turn it on** (needs Supabase, same as real-time):
+1. Add repo secrets (**Settings → Secrets and variables → Actions**):
+   - `SUPABASE_URL` — your project URL (or reuse `VITE_SUPABASE_URL`).
+   - `SUPABASE_SERVICE_ROLE` — the **service_role** key from Supabase
+     (Settings → API). It has write access and is only used server-side in the
+     Action, never shipped to the browser. *(If you'd rather not use it, the
+     job also accepts `VITE_SUPABASE_ANON_KEY`, which works because the current
+     RLS allows writes.)*
+2. It then runs automatically every 5 hours. To run it now:
+   **Actions → Sync sheet to database → Run workflow**.
+3. Check the run log for a summary like
+   `Participants: +2 added, 3 updated`.
+
+> Schedules are UTC and GitHub may delay them under load. GitHub also pauses
+> scheduled workflows after 60 days without repo activity — any push re-arms them.
+
+Run it locally too:
+
+```bash
+SUPABASE_URL=... SUPABASE_SERVICE_ROLE=... npm run sync
+```
+
 ---
 
 ## 6. Troubleshooting

@@ -1,0 +1,39 @@
+name: Sync sheet to database
+
+# Runs every 5 hours (UTC) and on demand. Pulls the participants Google Sheet
+# and reconciles groups / units / participants into Supabase.
+# Requires repo secrets: SUPABASE_URL (or VITE_SUPABASE_URL) and
+# SUPABASE_SERVICE_ROLE (or VITE_SUPABASE_ANON_KEY).
+on:
+  schedule:
+    - cron: '0 */5 * * *'
+  workflow_dispatch:
+    inputs:
+      allow_delete:
+        description: 'Hard-delete participants removed from the sheet (cascades to their selections)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-sheet
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Sync sheet -> Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE || secrets.VITE_SUPABASE_ANON_KEY }}
+          ALLOW_DELETE: ${{ inputs.allow_delete }}
+        run: npm run sync
