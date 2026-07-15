@@ -4,3 +4,8 @@ dist/
 .env.local
 *.log
 .DS_Store
+
+# Demo recordings (regenerate with: node demo/record-demo.mjs)
+demo/*.webm
+demo/*.mp4
+demo/video/
