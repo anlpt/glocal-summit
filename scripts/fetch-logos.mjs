@@ -44,21 +44,44 @@ const DOMAINS = {
   'University of Economics Ho Chi Minh City': 'ueh.edu.vn',
   'UEH': 'ueh.edu.vn',
   'University of Saint Joseph': 'usj.edu.mo',
+  'Consulate General of the Republic of Indonesia': 'kemlu.go.id',
+  'ISC Innovation and Technology Incubation Center': 'ueh.edu.vn',
+  'Binh My Commune, Ho Chi Minh City': 'hochiminhcity.gov.vn',
 };
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 
 async function download(url, dest) {
   try {
-    const res = await fetch(url, { redirect: 'follow' });
+    const res = await fetch(url, {
+      redirect: 'follow',
+      headers: { 'User-Agent': 'Mozilla/5.0 (logo-fetch)' },
+    });
     if (!res.ok) return false;
     const buf = Buffer.from(await res.arrayBuffer());
-    if (buf.length < 200) return false; // reject tiny/blank
+    if (buf.length < 100) return false; // reject tiny/blank
     writeFileSync(dest, buf);
     return true;
   } catch {
     return false;
   }
+}
+
+// Try several logo/favicon sources in quality order until one lands.
+async function fetchLogo(domain, dest) {
+  const sources = [
+    `https://logo.clearbit.com/${domain}?size=256`,
+    `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+    `https://icons.duckduckgo.com/ip3/www.${domain}.ico`,
+    `https://www.google.com/s2/favicons?domain=${domain}&sz=256`,
+    `https://${domain}/favicon.ico`,
+    `https://www.${domain}/favicon.ico`,
+    `https://www.google.com/s2/favicons?domain=${domain}&sz=128`,
+  ];
+  for (const url of sources) {
+    if (await download(url, dest)) return true;
+  }
+  return false;
 }
 
 const orgs = [...new Set(seedParticipants.map((p) => p.org).filter(Boolean))];
@@ -71,15 +94,10 @@ for (const org of orgs) {
   const file = `${slug(org)}.png`;
   const dest = resolve(outDir, file);
   const rel = `/logos/${file}`;
+  // Re-fetch missing files only; keep ones already downloaded.
   if (existsSync(dest)) { map[org] = rel; hits++; continue; }
 
-  const clearbit = `https://logo.clearbit.com/${domain}?size=256`;
-  const ddg = `https://icons.duckduckgo.com/ip3/${domain}.ico`;
-  const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
-  const ok =
-    (await download(clearbit, dest)) ||
-    (await download(ddg, dest)) ||
-    (await download(favicon, dest));
+  const ok = await fetchLogo(domain, dest);
   if (ok) { map[org] = rel; hits++; console.log('  ✓', org, '→', domain); }
   else { map[org] = null; console.log('  ✗', org, '(', domain, ')'); }
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { logoForOrg } from '../../lib/db.ts';
 import './logo.css';
 
@@ -14,20 +15,32 @@ function initials(org: string): string {
   return (picked.length ? picked : words).map((w) => w[0]?.toUpperCase() ?? '').join('');
 }
 
-/** Organization logo. Falls back to a monogram badge when no image exists. */
+/** Resolve a stored logo path against the app base URL (so it works under
+ *  GitHub Pages' /glocal-summit/ subpath). Data/http URLs pass through. */
+function resolveSrc(path: string): string {
+  if (path.startsWith('data:') || path.startsWith('http')) return path;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  return `${base}/${path.replace(/^\//, '')}`;
+}
+
+/** Organization logo. Falls back to a monogram badge when no image exists
+ *  or the image fails to load. */
 export default function Logo({ org, src, size = 40 }: LogoProps) {
+  const [failed, setFailed] = useState(false);
   const path = src ?? logoForOrg(org);
   const label = org || 'Organization';
-  if (path) {
+
+  if (path && !failed) {
     return (
       <img
         className="org-logo"
-        src={path}
+        src={resolveSrc(path)}
         alt={label}
         width={size}
         height={size}
         loading="lazy"
         title={label}
+        onError={() => setFailed(true)}
       />
     );
   }
