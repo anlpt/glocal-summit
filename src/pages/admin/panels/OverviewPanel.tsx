@@ -6,7 +6,7 @@ import { exportMaster } from '../../../lib/excel.ts';
 import { SETTING_KEYS } from '../../../types.ts';
 
 export default function OverviewPanel({ summit }: { summit: SummitData }) {
-  const { settings, groups, labs, participants, selections, reload } = summit;
+  const { settings, groups, labs, participants, selections, responses, reload } = summit;
   const votingOpen = isVotingOpen(settings);
   const [saving, setSaving] = useState(false);
 
@@ -82,13 +82,36 @@ export default function OverviewPanel({ summit }: { summit: SummitData }) {
       </section>
 
       <section className="card">
+        <h2 className="card__title">Open-ended question</h2>
+        <p className="card__hint">
+          Shown to every participant below the units. Edit the wording anytime.
+        </p>
+        <TextField
+          key={`collab-${settings.collab_question ?? ''}`}
+          label="Question"
+          initial={settings.collab_question ?? ''}
+          multiline
+          onSave={(v) => saveText(SETTING_KEYS.collabQuestion, v)}
+        />
+      </section>
+
+      <section className="card">
         <h2 className="card__title">Export</h2>
         <p className="card__hint">
-          Download an Excel workbook: Participants, Selections, Lab Counts, Group Counts.
+          Download an Excel workbook: Participants, Selections, Lab Counts, Group Counts, Answers.
         </p>
         <button
           className="btn btn--primary"
-          onClick={() => exportMaster(groups, labs, participants, selections)}
+          onClick={() =>
+            exportMaster(
+              groups,
+              labs,
+              participants,
+              selections,
+              responses,
+              settings.collab_question || 'Open-ended question',
+            )
+          }
         >
           Export everything to Excel
         </button>

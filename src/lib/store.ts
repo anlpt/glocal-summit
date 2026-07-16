@@ -1,4 +1,4 @@
-import type { Group, Lab, Participant, Selection, SettingsMap } from '../types.ts';
+import type { Group, Lab, Participant, Selection, Response, SettingsMap } from '../types.ts';
 
 /** Storage-agnostic data layer. Implemented by localStore and supabaseStore. */
 export interface Store {
@@ -6,11 +6,13 @@ export interface Store {
   getLabs(): Promise<Lab[]>;
   getParticipants(): Promise<Participant[]>;
   getSelections(): Promise<Selection[]>;
+  getResponses(): Promise<Response[]>;
   getSettings(): Promise<SettingsMap>;
   findParticipantByEmail(email: string): Promise<Participant | null>;
 
   setSelections(participantId: number, labIds: number[]): Promise<void>;
   resetSelections(participantId?: number): Promise<void>;
+  setResponse(participantId: number, answer: string): Promise<void>;
 
   setSetting(key: string, value: string): Promise<void>;
   saveGroup(group: Group): Promise<void>;

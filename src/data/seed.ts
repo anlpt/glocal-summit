@@ -4,13 +4,13 @@ import type { Group, Lab, Participant } from '../types.ts';
 export const seedGroups: Group[] = [
   {
     "id": 1,
-    "name": "Governance & Policy Planning Lab - New Economy Lab",
+    "name": "Creative Media Innovation Lab - Entertainment & Heritage Innovation Lab - AI Art & Branding Lab - Digital Media and Sustainable Wellbeing Lab; AI & Sustainability Lab - Immersive Convergence Center",
     "color": "#cc2027",
     "sort_order": 1
   },
   {
     "id": 2,
-    "name": "Creative Media Innovation Lab - Entertainment & Heritage Innovation Lab - AI Art & Branding Lab - Digital Media and Sustainable Wellbeing Lab; AI & Sustainability Lab",
+    "name": "Governance & Policy Planning Lab - New Economy Lab",
     "color": "#e8710a",
     "sort_order": 2
   },
@@ -22,7 +22,7 @@ export const seedGroups: Group[] = [
   },
   {
     "id": 4,
-    "name": "Public Space Lab - Data Drive & Urban Design Lab",
+    "name": "Public Space Lab - Data Drive & Urban Design Lab - International Center of Urbanism",
     "color": "#2f6fd6",
     "sort_order": 4
   },
@@ -50,119 +50,131 @@ export const seedLabs: Lab[] = [
   {
     "id": 1,
     "group_id": 1,
-    "name": "Governance & Policy Planning Lab",
+    "name": "Creative Media Innovation Lab",
     "sort_order": 1
   },
   {
     "id": 2,
     "group_id": 1,
-    "name": "New Economy Lab",
-    "sort_order": 2
-  },
-  {
-    "id": 3,
-    "group_id": 2,
-    "name": "Creative Media Innovation Lab",
-    "sort_order": 1
-  },
-  {
-    "id": 4,
-    "group_id": 2,
     "name": "Entertainment & Heritage Innovation Lab",
     "sort_order": 2
   },
   {
-    "id": 5,
-    "group_id": 2,
+    "id": 3,
+    "group_id": 1,
     "name": "AI Art & Branding Lab",
     "sort_order": 3
   },
   {
-    "id": 6,
-    "group_id": 2,
+    "id": 4,
+    "group_id": 1,
     "name": "Digital Media and Sustainable Wellbeing Lab",
     "sort_order": 4
   },
   {
-    "id": 7,
-    "group_id": 2,
+    "id": 5,
+    "group_id": 1,
     "name": "AI & Sustainability Lab",
     "sort_order": 5
   },
   {
+    "id": 6,
+    "group_id": 1,
+    "name": "Immersive Convergence Center",
+    "sort_order": 6
+  },
+  {
+    "id": 7,
+    "group_id": 2,
+    "name": "Governance & Policy Planning Lab",
+    "sort_order": 1
+  },
+  {
     "id": 8,
+    "group_id": 2,
+    "name": "New Economy Lab",
+    "sort_order": 2
+  },
+  {
+    "id": 9,
     "group_id": 3,
     "name": "Living Lab",
     "sort_order": 1
   },
   {
-    "id": 9,
+    "id": 10,
     "group_id": 3,
     "name": "NetZero Open Lab",
     "sort_order": 2
   },
   {
-    "id": 10,
+    "id": 11,
     "group_id": 4,
     "name": "Public Space Lab",
     "sort_order": 1
   },
   {
-    "id": 11,
+    "id": 12,
     "group_id": 4,
     "name": "Data Drive & Urban Design Lab",
     "sort_order": 2
   },
   {
-    "id": 12,
+    "id": 13,
+    "group_id": 4,
+    "name": "International Center of Urbanism",
+    "sort_order": 3
+  },
+  {
+    "id": 14,
     "group_id": 5,
     "name": "Robotic & AI Lab",
     "sort_order": 1
   },
   {
-    "id": 13,
+    "id": 15,
     "group_id": 5,
     "name": "Open Lab",
     "sort_order": 2
   },
   {
-    "id": 14,
+    "id": 16,
     "group_id": 5,
     "name": "3I Research Center",
     "sort_order": 3
   },
   {
-    "id": 15,
+    "id": 17,
     "group_id": 6,
     "name": "Smart City Research",
     "sort_order": 1
   },
   {
-    "id": 16,
+    "id": 18,
     "group_id": 6,
     "name": "Move System Lab",
     "sort_order": 2
   },
   {
-    "id": 17,
+    "id": 19,
     "group_id": 6,
     "name": "Immersive Technology Convergence Center",
     "sort_order": 3
   },
   {
-    "id": 18,
+    "id": 20,
     "group_id": 7,
     "name": "TIR Lab",
     "sort_order": 1
   },
   {
-    "id": 19,
+    "id": 21,
     "group_id": 7,
     "name": "BIT Lab",
     "sort_order": 2
   },
   {
-    "id": 20,
+    "id": 22,
     "group_id": 7,
     "name": "AI & Human Experience Lab",
     "sort_order": 3
@@ -172,71 +184,6 @@ export const seedLabs: Lab[] = [
 export const seedParticipants: Participant[] = [
   {
     "id": 1,
-    "stt": "13",
-    "title": "Mr.",
-    "name": "Clinton Moore",
-    "country": "",
-    "org": "UNDP Asia and the Pacific",
-    "org_logo_url": null,
-    "role": "Urban Governance Specialist Consultant",
-    "email": "clinton.moore@undp.org",
-    "coordinator": "Mai (ISCM) - Tú Anh (ISCM)",
-    "group_id": 1
-  },
-  {
-    "id": 2,
-    "stt": "14",
-    "title": "Dr.",
-    "name": "Cung Trong Cuong",
-    "country": "Hue, Vietnam",
-    "org": "Hue Institute for Development Studies",
-    "org_logo_url": null,
-    "role": "Director",
-    "email": "cuongcung@hueids.vn",
-    "coordinator": "Mai (ISCM) - Tú Anh (ISCM)",
-    "group_id": 1
-  },
-  {
-    "id": 3,
-    "stt": "27",
-    "title": "Prof.",
-    "name": "Manfredo Manfredini",
-    "country": "NewZealand",
-    "org": "School of Architecture and Planning University of Auckland",
-    "org_logo_url": null,
-    "role": "Associate Professor · Director (Architecture & International Engagement), Deputy Head - Architecture",
-    "email": "m.manfredini@auckland.ac.nz",
-    "coordinator": "Mai (ISCM) - Tú Anh (ISCM)",
-    "group_id": 1
-  },
-  {
-    "id": 4,
-    "stt": "28",
-    "title": "Dr.",
-    "name": "Nguyen Anh Tuan",
-    "country": "Vietnam",
-    "org": "Binh My Commune, Ho Chi Minh City",
-    "org_logo_url": null,
-    "role": "Chairman",
-    "email": "tuankts@gmail.com",
-    "coordinator": "Mai (ISCM) - Tú Anh (ISCM)",
-    "group_id": 1
-  },
-  {
-    "id": 5,
-    "stt": "11",
-    "title": "Ms.",
-    "name": "Bui Thu Hien",
-    "country": "Vietnam",
-    "org": "UN-Habitat",
-    "org_logo_url": null,
-    "role": "Project Coordinator",
-    "email": "hienchip762003@gmail.com",
-    "coordinator": "Mai (ISCM) - Tú Anh (ISCM)",
-    "group_id": 1
-  },
-  {
-    "id": 6,
     "stt": "6",
     "title": "Prof. Dr.",
     "name": "Haipeng Mi",
@@ -245,11 +192,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Director, Media and Interaction Lab (Milab)",
     "email": "mhp@tsinghua.edu.cn",
-    "coordinator": "2 giảng viên/ nghiên cứu viên SMD",
-    "group_id": 2
+    "coordinator": "Linh (SMD) - Trang (SMD)",
+    "group_id": 1
   },
   {
-    "id": 7,
+    "id": 2,
     "stt": "19",
     "title": "Dr.",
     "name": "Filipa Martins",
@@ -258,11 +205,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Assistant Professor",
     "email": "filipa.martins@usj.edu.mo",
-    "coordinator": "2 giảng viên/ nghiên cứu viên SMD",
-    "group_id": 2
+    "coordinator": "Linh (SMD) - Trang (SMD)",
+    "group_id": 1
   },
   {
-    "id": 8,
+    "id": 3,
     "stt": "26",
     "title": "Dr.",
     "name": "LeeHwan Hwang",
@@ -271,11 +218,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Chair of Department of Immersive Convergence Contents CEO",
     "email": "optics.hwang@kw.ac.kr",
-    "coordinator": "2 giảng viên/ nghiên cứu viên SMD",
-    "group_id": 2
+    "coordinator": "Linh (SMD) - Trang (SMD)",
+    "group_id": 1
   },
   {
-    "id": 9,
+    "id": 4,
     "stt": "29",
     "title": "Dr.",
     "name": "Nurul Hanim Romainoor",
@@ -284,11 +231,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "",
     "email": "hanim.romainoor@usm.my",
-    "coordinator": "2 giảng viên/ nghiên cứu viên SMD",
-    "group_id": 2
+    "coordinator": "Linh (SMD) - Trang (SMD)",
+    "group_id": 1
   },
   {
-    "id": 10,
+    "id": 5,
     "stt": "37",
     "title": "Prof.",
     "name": "SeungHyun Lee",
@@ -297,7 +244,72 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Director",
     "email": "shlee@kw.ac.kr",
-    "coordinator": "2 giảng viên/ nghiên cứu viên SMD",
+    "coordinator": "Linh (SMD) - Trang (SMD)",
+    "group_id": 1
+  },
+  {
+    "id": 6,
+    "stt": "13",
+    "title": "Mr.",
+    "name": "Clinton Moore",
+    "country": "",
+    "org": "UNDP Asia and the Pacific",
+    "org_logo_url": null,
+    "role": "Urban Governance Specialist Consultant",
+    "email": "clinton.moore@undp.org",
+    "coordinator": "Mai (ISCM) - Hoài (ISCM)",
+    "group_id": 2
+  },
+  {
+    "id": 7,
+    "stt": "14",
+    "title": "Dr.",
+    "name": "Cung Trong Cuong",
+    "country": "Hue, Vietnam",
+    "org": "Hue Institute for Development Studies",
+    "org_logo_url": null,
+    "role": "Director",
+    "email": "cuongcung@hueids.vn",
+    "coordinator": "Mai (ISCM) - Hoài (ISCM)",
+    "group_id": 2
+  },
+  {
+    "id": 8,
+    "stt": "27",
+    "title": "Prof.",
+    "name": "Manfredo Manfredini",
+    "country": "NewZealand",
+    "org": "School of Architecture and Planning University of Auckland",
+    "org_logo_url": null,
+    "role": "Associate Professor · Director (Architecture & International Engagement), Deputy Head - Architecture",
+    "email": "m.manfredini@auckland.ac.nz",
+    "coordinator": "Mai (ISCM) - Hoài (ISCM)",
+    "group_id": 2
+  },
+  {
+    "id": 9,
+    "stt": "28",
+    "title": "Dr.",
+    "name": "Nguyen Anh Tuan",
+    "country": "Vietnam",
+    "org": "Binh My Commune, Ho Chi Minh City",
+    "org_logo_url": null,
+    "role": "Chairman",
+    "email": "tuankts@gmail.com",
+    "coordinator": "Mai (ISCM) - Hoài (ISCM)",
+    "group_id": 2
+  },
+  {
+    "id": 10,
+    "stt": "11",
+    "title": "Ms.",
+    "name": "Bui Thu Hien",
+    "country": "Vietnam",
+    "org": "UN-Habitat",
+    "org_logo_url": null,
+    "role": "Project Coordinator",
+    "email": "hienchip762003@gmail.com",
+    "coordinator": "Mai (ISCM) - Hoài (ISCM)",
     "group_id": 2
   },
   {
@@ -310,7 +322,7 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Researcher",
     "email": "hylee@kict.re.kr",
-    "coordinator": "Hiển (ISCM) - Quang (ISCM)",
+    "coordinator": "Hiển (ISCM) - Tú Anh (ISCM)",
     "group_id": 3
   },
   {
@@ -323,7 +335,7 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Director Professor",
     "email": "jskim14@unist.ac.kr",
-    "coordinator": "Hiển (ISCM) - Quang (ISCM)",
+    "coordinator": "Hiển (ISCM) - Tú Anh (ISCM)",
     "group_id": 3
   },
   {
@@ -336,7 +348,7 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Lecturer",
     "email": "wichitra.s@msu.ac.th",
-    "coordinator": "Hiển (ISCM) - Quang (ISCM)",
+    "coordinator": "Hiển (ISCM) - Tú Anh (ISCM)",
     "group_id": 3
   },
   {
@@ -349,7 +361,7 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "",
     "email": "sophiecloes@icloud.com",
-    "coordinator": "Hiển (ISCM) - Quang (ISCM)",
+    "coordinator": "Hiển (ISCM) - Tú Anh (ISCM)",
     "group_id": 3
   },
   {
@@ -362,7 +374,7 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "",
     "email": "longhp@ueh.edu.vn",
-    "coordinator": "Hiển (ISCM) - Quang (ISCM)",
+    "coordinator": "Hiển (ISCM) - Tú Anh (ISCM)",
     "group_id": 3
   },
   {
@@ -432,6 +444,32 @@ export const seedParticipants: Participant[] = [
   },
   {
     "id": 21,
+    "stt": "1",
+    "title": "Prof.",
+    "name": "Kelly Shannon",
+    "country": "",
+    "org": "University of Economics Ho Chi Minh City",
+    "org_logo_url": null,
+    "role": "Glocal expert, Institute of Smart City and Management",
+    "email": "kshannon09@gmail.com",
+    "coordinator": "Daniela (ISCM) - Chi (ISCM)",
+    "group_id": 4
+  },
+  {
+    "id": 22,
+    "stt": "2",
+    "title": "Prof.",
+    "name": "Bruno De Meulder",
+    "country": "",
+    "org": "University of Economics Ho Chi Minh City",
+    "org_logo_url": null,
+    "role": "Glocal expert, Institute of Smart City and Management",
+    "email": "brdmeu@gmail.com",
+    "coordinator": "Daniela (ISCM) - Chi (ISCM)",
+    "group_id": 4
+  },
+  {
+    "id": 23,
     "stt": "3",
     "title": "Prof. Dr.",
     "name": "Bor-Jiunn Wen",
@@ -440,11 +478,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Professor and Chair, Department of Mechanical and Mechatronic Engineering",
     "email": "jiunner@mail.ntou.edu.tw",
-    "coordinator": "2 giảng viên/ nghiên cứu viên 3I",
+    "coordinator": "Bá Sơn (3I) - Đức Cường (3I) - Hoàng Kha (3I)",
     "group_id": 5
   },
   {
-    "id": 22,
+    "id": 24,
     "stt": "7",
     "title": "Prof. Dr.",
     "name": "Kim Yong-Guk",
@@ -453,11 +491,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Professor, Department of Computer Engineering",
     "email": "ykim@sejong.ac.kr",
-    "coordinator": "2 giảng viên/ nghiên cứu viên 3I",
+    "coordinator": "Bá Sơn (3I) - Đức Cường (3I) - Hoàng Kha (3I)",
     "group_id": 5
   },
   {
-    "id": 23,
+    "id": 25,
     "stt": "18",
     "title": "Prof",
     "name": "Fan-Bean Wu",
@@ -466,11 +504,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Professor",
     "email": "fbwu@nuu.edu.tw",
-    "coordinator": "2 giảng viên/ nghiên cứu viên 3I",
+    "coordinator": "Bá Sơn (3I) - Đức Cường (3I) - Hoàng Kha (3I)",
     "group_id": 5
   },
   {
-    "id": 24,
+    "id": 26,
     "stt": "24",
     "title": "Dr.",
     "name": "Junggon Sung",
@@ -479,11 +517,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Senior Research Fellow",
     "email": "jgsung@kict.re.kr",
-    "coordinator": "2 giảng viên/ nghiên cứu viên 3I",
+    "coordinator": "Bá Sơn (3I) - Đức Cường (3I) - Hoàng Kha (3I)",
     "group_id": 5
   },
   {
-    "id": 25,
+    "id": 27,
     "stt": "36",
     "title": "Mr.",
     "name": "Lâm Nguyễn Hải Long",
@@ -492,11 +530,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Director",
     "email": "long@vietnamisc.com",
-    "coordinator": "2 giảng viên/ nghiên cứu viên 3I",
+    "coordinator": "Bá Sơn (3I) - Đức Cường (3I) - Hoàng Kha (3I)",
     "group_id": 5
   },
   {
-    "id": 26,
+    "id": 28,
     "stt": "4",
     "title": "Ms.",
     "name": "Carolina Tinangon",
@@ -505,11 +543,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Consul General",
     "email": "c.tinangon@kemlu.go.id",
-    "coordinator": "Hoài (ISCM) - Tâm (ISCM)",
+    "coordinator": "An (ISCM) - Tâm (ISCM)",
     "group_id": 6
   },
   {
-    "id": 27,
+    "id": 29,
     "stt": "16",
     "title": "Prof.",
     "name": "Ducksu Seo",
@@ -518,11 +556,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Associate Professor",
     "email": "handonge@handong.edu",
-    "coordinator": "Hoài (ISCM) - Tâm (ISCM)",
+    "coordinator": "An (ISCM) - Tâm (ISCM)",
     "group_id": 6
   },
   {
-    "id": 28,
+    "id": 30,
     "stt": "20",
     "title": "Prof.",
     "name": "Frank Fichert",
@@ -531,11 +569,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Vice Dean",
     "email": "frank.fichert@hs-worms.de",
-    "coordinator": "Hoài (ISCM) - Tâm (ISCM)",
+    "coordinator": "An (ISCM) - Tâm (ISCM)",
     "group_id": 6
   },
   {
-    "id": 29,
+    "id": 31,
     "stt": "21",
     "title": "Dr.",
     "name": "Harvey Neo",
@@ -544,11 +582,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Professorial Fellow",
     "email": "harvey_neo@sutd.edu.sg",
-    "coordinator": "Hoài (ISCM) - Tâm (ISCM)",
+    "coordinator": "An (ISCM) - Tâm (ISCM)",
     "group_id": 6
   },
   {
-    "id": 30,
+    "id": 32,
     "stt": "25",
     "title": "Dr.",
     "name": "Krupa Rajangam",
@@ -557,11 +595,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Founder director",
     "email": "rajangamk@gmail.com",
-    "coordinator": "Hoài (ISCM) - Tâm (ISCM)",
+    "coordinator": "An (ISCM) - Tâm (ISCM)",
     "group_id": 6
   },
   {
-    "id": 31,
+    "id": 33,
     "stt": "8",
     "title": "Dr.",
     "name": "Soolyeon Cho",
@@ -570,11 +608,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Director, Building Energy Technology Lab",
     "email": "scho3@ncsu.edu",
-    "coordinator": "3 giảng viên/ nghiên cứu viên UII, BIT, SMD",
+    "coordinator": "Quyên (SMD) - Thanh (UII) - Huy (BIT)",
     "group_id": 7
   },
   {
-    "id": 32,
+    "id": 34,
     "stt": "9",
     "title": "Prof. Dr.",
     "name": "Utz Dornberger",
@@ -583,11 +621,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Director, SEPT Competence Center",
     "email": "dornberg@uni-leipzig.de",
-    "coordinator": "3 giảng viên/ nghiên cứu viên UII, BIT, SMD",
+    "coordinator": "Quyên (SMD) - Thanh (UII) - Huy (BIT)",
     "group_id": 7
   },
   {
-    "id": 33,
+    "id": 35,
     "stt": "17",
     "title": "Prof.",
     "name": "Erik Wende",
@@ -596,11 +634,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Professor",
     "email": "erikwende@mac.com",
-    "coordinator": "3 giảng viên/ nghiên cứu viên UII, BIT, SMD",
+    "coordinator": "Quyên (SMD) - Thanh (UII) - Huy (BIT)",
     "group_id": 7
   },
   {
-    "id": 34,
+    "id": 36,
     "stt": "30",
     "title": "Prof.",
     "name": "Pawinee Imtrakul",
@@ -609,11 +647,11 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "Director of the Center of Excellence in Urban Mobility Research and Innovation Professor, Department of Urban Environmental Planning and Development, Faculty of Architecture and Planning",
     "email": "iamtrakul@gmail.com",
-    "coordinator": "3 giảng viên/ nghiên cứu viên UII, BIT, SMD",
+    "coordinator": "Quyên (SMD) - Thanh (UII) - Huy (BIT)",
     "group_id": 7
   },
   {
-    "id": 35,
+    "id": 37,
     "stt": "34",
     "title": "Dr.",
     "name": "Christopher Han",
@@ -622,33 +660,7 @@ export const seedParticipants: Participant[] = [
     "org_logo_url": null,
     "role": "",
     "email": "christopher.han@ueh.edu.vn",
-    "coordinator": "3 giảng viên/ nghiên cứu viên UII, BIT, SMD",
+    "coordinator": "Quyên (SMD) - Thanh (UII) - Huy (BIT)",
     "group_id": 7
-  },
-  {
-    "id": 36,
-    "stt": "1",
-    "title": "Prof.",
-    "name": "Kelly Shannon",
-    "country": "",
-    "org": "University of Economics Ho Chi Minh City",
-    "org_logo_url": null,
-    "role": "Glocal expert, Institute of Smart City and Management",
-    "email": "",
-    "coordinator": "",
-    "group_id": null
-  },
-  {
-    "id": 37,
-    "stt": "2",
-    "title": "Prof.",
-    "name": "Bruno De Meulder",
-    "country": "",
-    "org": "University of Economics Ho Chi Minh City",
-    "org_logo_url": null,
-    "role": "Glocal expert, Institute of Smart City and Management",
-    "email": "",
-    "coordinator": "",
-    "group_id": null
   }
 ];

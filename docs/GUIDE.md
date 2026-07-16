@@ -197,7 +197,8 @@ data — no live sync between devices.
 1. Enter name, country, and the email your invitation was sent to.
 2. If the email is on the list, the research units appear grouped by topic.
 3. Tick **every** unit you want (more than one is fine, across any group).
-4. Click **Save my selections**. Come back anytime with the same email to edit —
+4. Answer the **open-ended question** at the bottom (free text — optional).
+5. Click **Save my selections**. Come back anytime with the same email to edit —
    until the admin closes voting.
 
 ### For the big screen (`/live`)
@@ -208,7 +209,8 @@ data — no live sync between devices.
 
 ### For the admin (`/admin`, login `admin` / `123`)
 - **Overview:** open/close voting, edit the hero text & instructions, set the
-  live view's default style, and **Export everything to Excel**.
+  live view's default style, **edit the open-ended question**, and
+  **Export everything to Excel** (includes an "Answers" sheet).
 - **Groups & Units:** rename groups, change their colors, add/remove units.
 - **Participants:** search, add, edit, delete; **upload a logo** for anyone whose
   auto-fetched logo is missing or wrong.

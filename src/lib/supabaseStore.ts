@@ -1,4 +1,4 @@
-import type { Group, Lab, Participant, Selection, SettingsMap } from '../types.ts';
+import type { Group, Lab, Participant, Selection, Response, SettingsMap } from '../types.ts';
 import { supabase } from './supabase.ts';
 import { type Store, normalizeEmail } from './store.ts';
 
@@ -30,6 +30,11 @@ export const supabaseStore: Store = {
     if (error) throw error;
     return (data ?? []) as Selection[];
   },
+  async getResponses() {
+    const { data, error } = await sb().from('responses').select('*');
+    if (error) throw error;
+    return (data ?? []) as Response[];
+  },
   async getSettings() {
     const { data, error } = await sb().from('settings').select('*');
     if (error) throw error;
@@ -57,6 +62,21 @@ export const supabaseStore: Store = {
     let q = sb().from('selections').delete();
     q = participantId == null ? q.gte('id', 0) : q.eq('participant_id', participantId);
     const { error } = await q;
+    if (error) throw error;
+  },
+  async setResponse(participantId, answer) {
+    const trimmed = answer.trim();
+    if (!trimmed) {
+      const { error } = await sb().from('responses').delete().eq('participant_id', participantId);
+      if (error) throw error;
+      return;
+    }
+    const { error } = await sb()
+      .from('responses')
+      .upsert(
+        { participant_id: participantId, answer: trimmed, updated_at: new Date().toISOString() },
+        { onConflict: 'participant_id' },
+      );
     if (error) throw error;
   },
 
@@ -96,6 +116,7 @@ export const supabaseStore: Store = {
     const channel = sb()
       .channel('gs-changes')
       .on('postgres_changes', { event: '*', schema: 'public', table: 'selections' }, onChange)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'responses' }, onChange)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'settings' }, onChange)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'groups' }, onChange)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'labs' }, onChange)

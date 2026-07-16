@@ -15,6 +15,7 @@ capturing what was done, key decisions, and where to pick up next.
 | 2026-07-15 | Phase 5: admin CMS + Excel | [2026-07-15-admin-cms.md](2026-07-15-admin-cms.md) |
 | 2026-07-15 | Phase 6: docs + deploy | [2026-07-15-docs-and-deploy.md](2026-07-15-docs-and-deploy.md) |
 | 2026-07-15 | Scheduled sheet→Supabase sync (every 5h) | [2026-07-15-sheet-sync-agent.md](2026-07-15-sheet-sync-agent.md) |
+| 2026-07-16 | Open-ended question + sheet re-sync | [2026-07-16-open-ended-question-and-resync.md](2026-07-16-open-ended-question-and-resync.md) |
 
 ## Current status
 

@@ -1,5 +1,6 @@
-import type { Group, Lab, Participant, Selection, SettingsMap } from '../types.ts';
+import type { Group, Lab, Participant, Selection, Response, SettingsMap } from '../types.ts';
 import { seedGroups, seedLabs, seedParticipants } from '../data/seed.ts';
+import { DEFAULT_COLLAB_QUESTION } from '../types.ts';
 import { type Store, normalizeEmail } from './store.ts';
 
 // localStorage-backed store: seeds from generated data, persists mutations,
@@ -10,6 +11,7 @@ const KEY = {
   labs: 'gs_labs',
   participants: 'gs_participants',
   selections: 'gs_selections',
+  responses: 'gs_responses',
   settings: 'gs_settings',
 } as const;
 
@@ -20,6 +22,7 @@ const DEFAULT_SETTINGS: SettingsMap = {
   instructions:
     'Sign in with your invited email, then pick every research unit you want to join. You can pick more than one, and edit until voting closes.',
   live_default_style: 'bubbles',
+  collab_question: DEFAULT_COLLAB_QUESTION,
 };
 
 const CHANGE_EVENT = 'gs-store-change';
@@ -45,6 +48,7 @@ function ensureSeeded(): void {
   if (!localStorage.getItem(KEY.participants))
     localStorage.setItem(KEY.participants, JSON.stringify(seedParticipants));
   if (!localStorage.getItem(KEY.selections)) localStorage.setItem(KEY.selections, JSON.stringify([]));
+  if (!localStorage.getItem(KEY.responses)) localStorage.setItem(KEY.responses, JSON.stringify([]));
   if (!localStorage.getItem(KEY.settings))
     localStorage.setItem(KEY.settings, JSON.stringify(DEFAULT_SETTINGS));
 }
@@ -68,6 +72,10 @@ export const localStore: Store = {
   async getSelections() {
     ensureSeeded();
     return read<Selection[]>(KEY.selections, []);
+  },
+  async getResponses() {
+    ensureSeeded();
+    return read<Response[]>(KEY.responses, []);
   },
   async getSettings() {
     ensureSeeded();
@@ -97,6 +105,19 @@ export const localStore: Store = {
     }
     const all = read<Selection[]>(KEY.selections, []);
     write(KEY.selections, all.filter((s) => s.participant_id !== participantId));
+  },
+  async setResponse(participantId, answer) {
+    const all = read<Response[]>(KEY.responses, []);
+    const others = all.filter((r) => r.participant_id !== participantId);
+    const trimmed = answer.trim();
+    if (!trimmed) {
+      write(KEY.responses, others);
+      return;
+    }
+    write(KEY.responses, [
+      ...others,
+      { id: genId(), participant_id: participantId, answer: trimmed, updated_at: new Date().toISOString() },
+    ]);
   },
 
   async setSetting(key, value) {

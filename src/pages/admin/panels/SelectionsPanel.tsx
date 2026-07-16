@@ -5,9 +5,14 @@ import { labCounts, participantsById } from '../../../lib/counts.ts';
 import { exportMaster, exportTable } from '../../../lib/excel.ts';
 
 export default function SelectionsPanel({ summit }: { summit: SummitData }) {
-  const { groups, labs, participants, selections, reload } = summit;
+  const { groups, labs, participants, selections, responses, settings, reload } = summit;
   const counts = useMemo(() => labCounts(labs, groups, selections), [labs, groups, selections]);
   const pById = useMemo(() => participantsById(participants), [participants]);
+  const answered = useMemo(
+    () => responses.filter((r) => r.answer.trim()),
+    [responses],
+  );
+  const collabQuestion = settings.collab_question || 'Open-ended question';
 
   async function resetAll() {
     if (!confirm('Delete ALL selections? This cannot be undone.')) return;
@@ -34,7 +39,7 @@ export default function SelectionsPanel({ summit }: { summit: SummitData }) {
         <button className="btn" onClick={exportCounts}>Export counts</button>
         <button
           className="btn"
-          onClick={() => exportMaster(groups, labs, participants, selections)}
+          onClick={() => exportMaster(groups, labs, participants, selections, responses, collabQuestion)}
         >
           Export full workbook
         </button>
@@ -63,6 +68,33 @@ export default function SelectionsPanel({ summit }: { summit: SummitData }) {
             ))}
           </tbody>
         </table>
+      </section>
+
+      <section className="card">
+        <h2 className="card__title">
+          Open-ended answers ({answered.length})
+        </h2>
+        <p className="card__hint">{collabQuestion}</p>
+        {answered.length === 0 ? (
+          <p className="card__hint">No answers yet.</p>
+        ) : (
+          <table className="datatable">
+            <thead>
+              <tr><th>Participant</th><th>Answer</th></tr>
+            </thead>
+            <tbody>
+              {answered.map((r) => {
+                const p = pById.get(r.participant_id);
+                return (
+                  <tr key={r.participant_id}>
+                    <td>{p ? `${p.name}` : `#${r.participant_id}`}</td>
+                    <td>{r.answer}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
       </section>
     </div>
   );

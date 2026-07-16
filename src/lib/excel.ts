@@ -1,4 +1,4 @@
-import type { Group, Lab, Participant, Selection } from '../types.ts';
+import type { Group, Lab, Participant, Selection, Response } from '../types.ts';
 import { labCounts, groupCounts, participantsById } from './counts.ts';
 
 interface Column {
@@ -43,12 +43,14 @@ export function exportTable(
   return buildAndDownload(filename, [{ name: sheetName, columns, rows }]);
 }
 
-/** Master workbook: Participants, Selections, Lab Counts, Group Counts. */
+/** Master workbook: Participants, Selections, Lab Counts, Group Counts, Answers. */
 export function exportMaster(
   groups: Group[],
   labs: Lab[],
   participants: Participant[],
   selections: Selection[],
+  responses: Response[] = [],
+  collabQuestion = 'Open-ended question',
 ): Promise<void> {
   const pById = participantsById(participants);
   const labById = new Map(labs.map((l) => [l.id, l]));
@@ -90,6 +92,13 @@ export function exportMaster(
     group: c.group.name,
     count: c.count,
   }));
+
+  const answerRows = responses
+    .filter((r) => r.answer.trim())
+    .map((r) => {
+      const p = pById.get(r.participant_id);
+      return { name: p?.name ?? '', email: p?.email ?? '', org: p?.org ?? '', answer: r.answer };
+    });
 
   return buildAndDownload('glocal-summit-export.xlsx', [
     {
@@ -135,6 +144,16 @@ export function exportMaster(
         { header: 'Selections', key: 'count', width: 12 },
       ],
       rows: groupRows,
+    },
+    {
+      name: 'Answers',
+      columns: [
+        { header: 'Name', key: 'name', width: 24 },
+        { header: 'Email', key: 'email', width: 28 },
+        { header: 'Organization', key: 'org', width: 34 },
+        { header: collabQuestion.slice(0, 60) || 'Answer', key: 'answer', width: 70 },
+      ],
+      rows: answerRows,
     },
   ]);
 }

@@ -8,7 +8,7 @@ import './participant.css';
 const CURRENT_KEY = 'gs_current_participant';
 
 export default function Participant() {
-  const { groups, labs, participants, selections, settings, loading } = useSummit();
+  const { groups, labs, participants, selections, responses, settings, loading } = useSummit();
   const [current, setCurrent] = useState<P | null>(null);
 
   // Restore session
@@ -50,6 +50,11 @@ export default function Participant() {
   const myLabIds = current
     ? selections.filter((s) => s.participant_id === current.id).map((s) => s.lab_id)
     : [];
+  const myAnswer = current
+    ? (responses.find((r) => r.participant_id === current.id)?.answer ?? '')
+    : '';
+  const collabQuestion =
+    settings.collab_question || 'In the future, what do you expect to collaborate with CTD?';
 
   return (
     <div className="page participant">
@@ -66,6 +71,8 @@ export default function Participant() {
           groups={groups}
           labs={labs}
           initialLabIds={myLabIds}
+          collabQuestion={collabQuestion}
+          initialAnswer={myAnswer}
           votingOpen={votingOpen}
           onSaved={() => undefined}
           onSwitchUser={handleSwitchUser}

@@ -33,6 +33,13 @@ export interface Selection {
   created_at?: string;
 }
 
+export interface Response {
+  id?: number;
+  participant_id: number;
+  answer: string;
+  updated_at?: string;
+}
+
 export type SettingsMap = Record<string, string>;
 
 export const SETTING_KEYS = {
@@ -41,4 +48,8 @@ export const SETTING_KEYS = {
   heroSubtitle: 'hero_subtitle',
   instructions: 'instructions',
   liveDefaultStyle: 'live_default_style',
+  collabQuestion: 'collab_question',
 } as const;
+
+export const DEFAULT_COLLAB_QUESTION =
+  'In the future, what do you expect to collaborate with CTD?';

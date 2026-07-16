@@ -7,6 +7,8 @@ interface UnitPickerProps {
   groups: Group[];
   labs: Lab[];
   initialLabIds: number[];
+  collabQuestion: string;
+  initialAnswer: string;
   votingOpen: boolean;
   onSaved: (labIds: number[]) => void;
   onSwitchUser: () => void;
@@ -17,11 +19,14 @@ export default function UnitPicker({
   groups,
   labs,
   initialLabIds,
+  collabQuestion,
+  initialAnswer,
   votingOpen,
   onSaved,
   onSwitchUser,
 }: UnitPickerProps) {
   const [selected, setSelected] = useState<Set<number>>(new Set(initialLabIds));
+  const [answer, setAnswer] = useState(initialAnswer);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
@@ -52,6 +57,7 @@ export default function UnitPicker({
     try {
       const ids = [...selected];
       await db.setSelections(participant.id, ids);
+      await db.setResponse(participant.id, answer);
       setSaved(true);
       onSaved(ids);
     } finally {
@@ -120,6 +126,24 @@ export default function UnitPicker({
           );
         })}
       </div>
+
+      <section className="collab">
+        <label className="collab__label" htmlFor="collab-answer">
+          {collabQuestion}
+        </label>
+        <textarea
+          id="collab-answer"
+          className="collab__input"
+          rows={4}
+          placeholder="Share your thoughts…"
+          value={answer}
+          disabled={!votingOpen}
+          onChange={(e) => {
+            setSaved(false);
+            setAnswer(e.target.value);
+          }}
+        />
+      </section>
 
       <div className="picker__actions">
         <button
