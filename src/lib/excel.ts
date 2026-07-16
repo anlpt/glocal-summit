@@ -66,6 +66,7 @@ export function exportMaster(
     email: p.email,
     coordinator: p.coordinator,
     topic: p.group_id ? (groupById.get(p.group_id)?.name ?? '') : '',
+    type: p.self_registered ? 'Guest' : 'Invited',
   }));
 
   const selectionRows = selections.map((s) => {
@@ -113,6 +114,7 @@ export function exportMaster(
         { header: 'Email', key: 'email', width: 28 },
         { header: 'Coordinator', key: 'coordinator', width: 24 },
         { header: 'Topic', key: 'topic', width: 40 },
+        { header: 'Type', key: 'type', width: 10 },
       ],
       rows: participantRows,
     },

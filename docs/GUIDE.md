@@ -195,7 +195,11 @@ data — no live sync between devices.
 
 ### For participants (`/`)
 1. Enter name, country, and the email your invitation was sent to.
-2. If the email is on the list, the research units appear grouped by topic.
+2. **Not on the invited list?** If guest registration is on, continuing with an
+   unrecognized email opens a short form (name, email, organization, country,
+   optional title) — register and you're in. Guests appear in admin tagged
+   **"Guest"**.
+3. If the email is on the list, the research units appear grouped by topic.
 3. Tick **every** unit you want (more than one is fine, across any group).
 4. Answer the **open-ended question** at the bottom (free text — optional).
 5. Click **Save my selections**. Come back anytime with the same email to edit —
@@ -208,9 +212,10 @@ data — no live sync between devices.
 - It updates in real time as people vote (Supabase mode).
 
 ### For the admin (`/admin`, login `admin` / `123`)
-- **Overview:** open/close voting, edit the hero text & instructions, set the
-  live view's default style, **edit the open-ended question**, and
-  **Export everything to Excel** (includes an "Answers" sheet).
+- **Overview:** open/close voting, **allow/disable guest registration**, edit the
+  hero text & instructions, set the live view's default style,
+  **edit the open-ended question**, and **Export everything to Excel**
+  (Participants sheet has a Type column = Invited/Guest; plus an "Answers" sheet).
 - **Groups & Units:** rename groups, change their colors, add/remove units.
 - **Participants:** search, add, edit, delete; **upload a logo** for anyone whose
   auto-fetched logo is missing or wrong.

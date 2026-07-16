@@ -8,6 +8,7 @@ import { SETTING_KEYS } from '../../../types.ts';
 export default function OverviewPanel({ summit }: { summit: SummitData }) {
   const { settings, groups, labs, participants, selections, responses, reload } = summit;
   const votingOpen = isVotingOpen(settings);
+  const allowRegistration = settings.allow_registration !== 'false';
   const [saving, setSaving] = useState(false);
 
   async function set(key: string, value: string) {
@@ -40,6 +41,24 @@ export default function OverviewPanel({ summit }: { summit: SummitData }) {
             onClick={() => set(SETTING_KEYS.votingOpen, votingOpen ? 'false' : 'true')}
           >
             {votingOpen ? 'Close voting' : 'Open voting'}
+          </button>
+        </div>
+      </section>
+
+      <section className="card">
+        <h2 className="card__title">Guest registration</h2>
+        <p className="card__hint">
+          When on, people not on the invited list can register with their own details and select units.
+        </p>
+        <div className="voting-toggle">
+          <span className={'voting-state' + (allowRegistration ? ' is-open' : '')}>
+            {allowRegistration ? '● Allowed' : '● Off'}
+          </span>
+          <button
+            className={allowRegistration ? 'btn btn--danger' : 'btn btn--primary'}
+            onClick={() => set(SETTING_KEYS.allowRegistration, allowRegistration ? 'false' : 'true')}
+          >
+            {allowRegistration ? 'Turn off registration' : 'Allow registration'}
           </button>
         </div>
       </section>

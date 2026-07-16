@@ -23,6 +23,7 @@ const DEFAULT_SETTINGS: SettingsMap = {
     'Sign in with your invited email, then pick every research unit you want to join. You can pick more than one, and edit until voting closes.',
   live_default_style: 'bubbles',
   collab_question: DEFAULT_COLLAB_QUESTION,
+  allow_registration: 'true',
 };
 
 const CHANGE_EVENT = 'gs-store-change';

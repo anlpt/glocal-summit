@@ -27,7 +27,8 @@ create table if not exists participants (
   role          text,
   email         text not null unique,
   coordinator   text,
-  group_id      bigint references groups(id) on delete set null
+  group_id      bigint references groups(id) on delete set null,
+  self_registered boolean not null default false
 );
 
 create table if not exists selections (
@@ -57,7 +58,8 @@ insert into settings (key, value) values
   ('hero_subtitle', 'RTD Glocal Summit 2026'),
   ('instructions', 'Sign in with your invited email, then pick every research unit you want to join. You can pick more than one, and edit until voting closes.'),
   ('live_default_style', 'bubbles'),
-  ('collab_question', 'In the future, what do you expect to collaborate with CTD?')
+  ('collab_question', 'In the future, what do you expect to collaborate with CTD?'),
+  ('allow_registration', 'true')
 on conflict (key) do nothing;
 
 -- ---------- Realtime ----------

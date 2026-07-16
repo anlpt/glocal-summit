@@ -78,7 +78,11 @@ export default function Participant() {
           onSwitchUser={handleSwitchUser}
         />
       ) : (
-        <LoginForm subtitle="Sign in with your invited email to begin." onLogin={handleLogin} />
+        <LoginForm
+          subtitle="Sign in with your invited email to begin."
+          allowRegistration={settings.allow_registration !== 'false'}
+          onLogin={handleLogin}
+        />
       )}
     </div>
   );

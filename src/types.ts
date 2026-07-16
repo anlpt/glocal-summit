@@ -24,6 +24,7 @@ export interface Participant {
   email: string;
   coordinator: string;
   group_id: number | null;
+  self_registered?: boolean;
 }
 
 export interface Selection {
@@ -49,6 +50,7 @@ export const SETTING_KEYS = {
   instructions: 'instructions',
   liveDefaultStyle: 'live_default_style',
   collabQuestion: 'collab_question',
+  allowRegistration: 'allow_registration',
 } as const;
 
 export const DEFAULT_COLLAB_QUESTION =

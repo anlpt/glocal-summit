@@ -45,8 +45,9 @@ export default function ParticipantsPanel({ summit }: { summit: SummitData }) {
         { header: 'Role', key: 'role', width: 30 },
         { header: 'Email', key: 'email', width: 28 },
         { header: 'Coordinator', key: 'coordinator', width: 24 },
+        { header: 'Type', key: 'type', width: 10 },
       ],
-      participants as unknown as Record<string, unknown>[],
+      participants.map((p) => ({ ...p, type: p.self_registered ? 'Guest' : 'Invited' })),
     );
   }
 
@@ -64,14 +65,23 @@ export default function ParticipantsPanel({ summit }: { summit: SummitData }) {
         <button className="btn" onClick={exportParticipants}>Export to Excel</button>
       </div>
 
-      <p className="card__hint">{filtered.length} of {participants.length} participants</p>
+      <p className="card__hint">
+        {filtered.length} of {participants.length} participants
+        {participants.some((p) => p.self_registered) &&
+          ` · ${participants.filter((p) => p.self_registered).length} guest${
+            participants.filter((p) => p.self_registered).length === 1 ? '' : 's'
+          }`}
+      </p>
 
       <ul className="plist">
         {filtered.map((p) => (
           <li key={p.id} className="plist__row">
             <Logo org={p.org} src={p.org_logo_url} size={36} />
             <div className="plist__info">
-              <span className="plist__name">{p.title} {p.name}</span>
+              <span className="plist__name">
+                {p.title} {p.name}
+                {p.self_registered && <span className="tag tag--guest">Guest</span>}
+              </span>
               <span className="plist__meta">{p.email} · {p.country}</span>
             </div>
             <button className="btn btn--ghost" onClick={() => setEditing(p)}>Edit</button>

@@ -134,13 +134,15 @@ async function main() {
   }
 
   // ---- Orphans (in DB but no longer in sheet) ----
+  // Self-registered guests are never in the sheet — exclude them from orphan
+  // handling so they are never flagged or deleted.
   for (const p of existingParts) {
     const email = String(p.email).toLowerCase();
-    if (!desiredEmails.has(email)) stats.orphans.push(p.name || email);
+    if (!desiredEmails.has(email) && !p.self_registered) stats.orphans.push(p.name || email);
   }
   if (ALLOW_DELETE && stats.orphans.length) {
     for (const p of existingParts) {
-      if (!desiredEmails.has(String(p.email).toLowerCase())) {
+      if (!desiredEmails.has(String(p.email).toLowerCase()) && !p.self_registered) {
         const { error } = await sb.from('participants').delete().eq('id', p.id);
         if (error) fail(`delete orphan "${p.email}": ${error.message}`);
       }
