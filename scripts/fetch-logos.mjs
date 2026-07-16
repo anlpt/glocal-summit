@@ -51,6 +51,19 @@ const DOMAINS = {
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 
+// Accept only real raster/icon images (reject HTML error pages, empty blobs).
+function isImage(buf) {
+  if (buf.length < 100) return false;
+  const b = buf;
+  const png = b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4e && b[3] === 0x47;
+  const jpg = b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff;
+  const gif = b[0] === 0x47 && b[1] === 0x49 && b[2] === 0x46;
+  const ico = b[0] === 0x00 && b[1] === 0x00 && b[2] === 0x01 && b[3] === 0x00;
+  const bmp = b[0] === 0x42 && b[1] === 0x4d;
+  const webp = b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46;
+  return png || jpg || gif || ico || bmp || webp;
+}
+
 async function download(url, dest) {
   try {
     const res = await fetch(url, {
@@ -59,7 +72,7 @@ async function download(url, dest) {
     });
     if (!res.ok) return false;
     const buf = Buffer.from(await res.arrayBuffer());
-    if (buf.length < 100) return false; // reject tiny/blank
+    if (!isImage(buf)) return false; // reject HTML/blank
     writeFileSync(dest, buf);
     return true;
   } catch {

@@ -3,9 +3,9 @@
 const LOGO_MAP: Record<string, string | null> = {
   "Faculty of Xinya College, Tsinghua University": "/logos/faculty-of-xinya-college-tsinghua-university.png",
   "University of Saint Joseph": "/logos/university-of-saint-joseph.png",
-  "Kwangwoon University Opticmix": "/logos/kwangwoon-university-opticmix.png",
+  "Kwangwoon University Opticmix": null,
   "Universiti Sains Malaysia": "/logos/universiti-sains-malaysia.png",
-  "Immersive Content Display Center, Deparment of Content Convergence, Kwangwoon University": "/logos/immersive-content-display-center-deparment-of-content-conver.png",
+  "Immersive Content Display Center, Deparment of Content Convergence, Kwangwoon University": null,
   "UNDP Asia and the Pacific": "/logos/undp-asia-and-the-pacific.png",
   "Hue Institute for Development Studies": "/logos/hue-institute-for-development-studies.png",
   "School of Architecture and Planning University of Auckland": "/logos/school-of-architecture-and-planning-university-of-auckland.png",
